@@ -1,35 +1,35 @@
 // Assignment code here
-function randomType() {
+function randomType() { /* pick a random character type from the selected types */
   var charType = selectedTypes[Math.floor(Math.random() * (selectedTypes.length))];
   return charType;
 }
 
-function randomChar(charType) {
+function randomChar(charType) { /* pick a random character from a specific character type */
   var character = charType[Math.floor(Math.random() * (charType.length))];
   return character;
 }
 
-function checkTypes(){
-  if(true) { /* includeUppercase */
+function checkTypes(){ /* checks which character types are needed and adds them to selectedTypes array*/
+  if(includeUppercase) { 
     console.log("The password will include uppercase characters.")
     selectedTypes.push(uppercase);
   }
-  if(true) { /* includeLowercase */
+  if(includeLowercase) { 
   console.log("The password will include lowercase characters.")
     selectedTypes.push(lowercase);
   }
-  if(true) { /* includeNumbers */
+  if(includeNumbers) { 
   console.log("The password will include numeric characters.")
     selectedTypes.push(numbers);
   }
-  if(true) { /* includeSpecial */
+  if(includeSpecial) { 
   console.log("The password will include special characters.")
     selectedTypes.push(special);
   }
   // console.log("Selected types are ", selectedTypes) 
 }
 
-function checkPassword(){
+function checkPassword(){ /* checks if the generated password meets reqirements */
   for(i = 0; i < selectedTypes.length; i ++){
     var type = selectedTypes[i];
     for (n = 0; n < passwordLength; n ++){
@@ -66,6 +66,10 @@ var includeUppercase = true
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var numbers = "1234567890";
 var special = "!@#$%^&*_+-=,./<>?;':{}[]";
+var includeUppercase = true
+var includeLowercase = true
+var includeNumbers = true
+var includeSpecial = true
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
