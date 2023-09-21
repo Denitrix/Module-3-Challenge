@@ -11,51 +11,64 @@ function randomChar(charType) { /* pick a random character from a specific chara
 
 function checkTypes(){ /* checks which character types are needed and adds them to selectedTypes array*/
   if(includeUppercase) { 
-    console.log("The password will include uppercase characters.")
     selectedTypes.push(uppercase);
   }
   if(includeLowercase) { 
-  console.log("The password will include lowercase characters.")
     selectedTypes.push(lowercase);
   }
   if(includeNumbers) { 
-  console.log("The password will include numeric characters.")
     selectedTypes.push(numbers);
   }
   if(includeSpecial) { 
-  console.log("The password will include special characters.")
     selectedTypes.push(special);
   }
   // console.log("Selected types are ", selectedTypes) 
 }
-
-function checkPassword(){ /* checks if the generated password meets reqirements */
+/* checks if the generated password meets reqirements */
+/* function checkPassword(){ 
+  var passwordOk = false
   for(i = 0; i < selectedTypes.length; i ++){
     var type = selectedTypes[i];
-    for (n = 0; n < passwordLength; n ++){
-      if(!(password.includes(type[n]))){
-        console.log("Password does not meet requirements. Generating new password.")
-        return false;
+    for (n = 0; n < type.length; n ++){
+      if((password.includes(type[n]))){
+        console.log("Password includes one of the following characters " + type);
+        passwordOk = true
+        break
+      }
+      console.log("Password does not include one of the following characters " + type)
+      return false
       }
     }
-  }
-  return true;
-}
+  return passwordOk;
+} */
 
 function generatePassword(){
   password = "";
   var newChar = "";
-  checkTypes()
-  for(i = 0; i < passwordLength; i ++){
-    newChar = randomChar(randomType());
-    password += (newChar);
-    // console.log(newChar);
+  while(password.length < passwordLength){
+    checkTypes();
+    while(selectedTypes.length > 0){
+      charType = randomType();
+      newChar = randomChar(charType);
+      while(selectedTypes.includes(charType)){
+        if(selectedTypes[0] == charType){
+          selectedTypes.shift();
+        } else{
+          var temp = selectedTypes.shift();
+          selectedTypes.push(temp);
+        }
+      }
+      password += (newChar);
+    }
   }
-  if(checkPassword()){
+  return password
+  /* if(checkPassword()){
     return password;
   } else {
-    generatePassword();
-  }
+    console.log("Password does not meet requirements. Generating new password.");
+    return password
+    // generatePassword();
+  } */
 }
 
 var password = "";
