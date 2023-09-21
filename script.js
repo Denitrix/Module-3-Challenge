@@ -51,7 +51,7 @@ function generatePassword(){
     password += (newChar);
     // console.log(newChar);
   }
-  if(checkPassword){
+  if(checkPassword()){
     return password;
   } else {
     generatePassword();
