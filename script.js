@@ -9,6 +9,21 @@ function randomChar(charType) { /* pick a random character from a specific chara
   return character;
 }
 
+function askTypes(){ /* checks which character types are needed and adds them to selectedTypes array*/
+  passwordLength = prompt("How long should the password be?")
+  if(8 <= passwordLength && passwordLength <= 128){ 
+    
+  } else {
+    alert("Password length must be between 8 and 128 characters long")
+    passwordLength = prompt("How long should the password be?")
+  }
+  includeUppercase = confirm("Include uppercase letters in the password?\nHit Cancel for no.");
+  includeLowercase = confirm("Include lowercase letters in the password?\nHit Cancel for no.");
+  includeNumbers = confirm("Include numbers in the password?\nHit Cancel for no.");
+  includeSpecial = confirm("Include special characters in the password?\nHit Cancel for no.");
+}
+  
+
 function checkTypes(){ /* checks which character types are needed and adds them to selectedTypes array*/
   if(includeUppercase) { 
     selectedTypes.push(uppercase);
@@ -45,6 +60,7 @@ function checkTypes(){ /* checks which character types are needed and adds them 
 function generatePassword(){
   password = "";
   var newChar = "";
+  askTypes();
   while(password.length < passwordLength){
     checkTypes();
     while(selectedTypes.length > 0){
