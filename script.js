@@ -11,7 +11,7 @@ function randomChar(charType) { /* pick a random character from a specific chara
 
 function askTypes(){ /* checks which character types are needed and adds them to selectedTypes array*/
   passwordLength = prompt("How long should the password be?")
-  if(8 < passwordLength && passwordLength < 128){ 
+  if(8 <= passwordLength && passwordLength <= 128){ 
     
   } else {
     alert("Password length must be between 8 and 128 characters long")
