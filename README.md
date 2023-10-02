@@ -7,7 +7,7 @@ An application that generates a random password of a given length with given par
 ## Site
 
 https://denitrix.github.io/Module-3-Challenge/
-![Screenshot of Website](03-javascript-homework-demo.png)
+![Screenshot of Website](./assets/images/03-javascript-homework-demo.png)
 
 ## License
 
@@ -32,6 +32,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 <!-- # 03 JavaScript: Password Generator
 
 ## Your Task
@@ -86,7 +87,7 @@ The following image shows the web application's appearance and functionality:
 >
 > * A repository that only includes starter code
 
-This Challenge is graded based on the following criteria: 
+This Challenge is graded based on the following criteria:
 
 ### Technical Acceptance Criteria: 40%
 
