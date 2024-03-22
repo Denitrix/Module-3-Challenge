@@ -1,43 +1,54 @@
 // Assignment code here
-function randomType() { /* pick a random character type from the selected types */
-  var charType = selectedTypes[Math.floor(Math.random() * (selectedTypes.length))];
+function randomType() {
+  /* pick a random character type from the selected types */
+  var charType =
+    selectedTypes[Math.floor(Math.random() * selectedTypes.length)];
   return charType;
 }
 
-function randomChar(charType) { /* pick a random character from a specific character type */
-  var character = charType[Math.floor(Math.random() * (charType.length))];
+function randomChar(charType) {
+  /* pick a random character from a specific character type */
+  var character = charType[Math.floor(Math.random() * charType.length)];
   return character;
 }
 
-function askTypes(){ /* checks which character types are needed and adds them to selectedTypes array*/
-  passwordLength = prompt("How long should the password be?")
-  if(8 <= passwordLength && passwordLength <= 128){ 
-    
+function askTypes() {
+  /* checks which character types are needed and adds them to selectedTypes array*/
+  passwordLength = prompt("How long should the password be?");
+  if (8 <= passwordLength && passwordLength <= 128) {
   } else {
-    alert("Password length must be between 8 and 128 characters long")
-    passwordLength = prompt("How long should the password be?")
+    alert("Password length must be between 8 and 128 characters long");
+    passwordLength = prompt("How long should the password be?");
   }
-  includeUppercase = confirm("Include uppercase letters in the password?\nHit Cancel for no.");
-  includeLowercase = confirm("Include lowercase letters in the password?\nHit Cancel for no.");
-  includeNumbers = confirm("Include numbers in the password?\nHit Cancel for no.");
-  includeSpecial = confirm("Include special characters in the password?\nHit Cancel for no.");
+  includeUppercase = confirm(
+    "Include uppercase letters in the password?\nHit Cancel for no."
+  );
+  includeLowercase = confirm(
+    "Include lowercase letters in the password?\nHit Cancel for no."
+  );
+  includeNumbers = confirm(
+    "Include numbers in the password?\nHit Cancel for no."
+  );
+  includeSpecial = confirm(
+    "Include special characters in the password?\nHit Cancel for no."
+  );
 }
-  
 
-function checkTypes(){ /* checks which character types are needed and adds them to selectedTypes array*/
-  if(includeUppercase) { 
+function checkTypes() {
+  /* checks which character types are needed and adds them to selectedTypes array*/
+  if (includeUppercase) {
     selectedTypes.push(uppercase);
   }
-  if(includeLowercase) { 
+  if (includeLowercase) {
     selectedTypes.push(lowercase);
   }
-  if(includeNumbers) { 
+  if (includeNumbers) {
     selectedTypes.push(numbers);
   }
-  if(includeSpecial) { 
+  if (includeSpecial) {
     selectedTypes.push(special);
   }
-  // console.log("Selected types are ", selectedTypes) 
+  // console.log("Selected types are ", selectedTypes)
 }
 /* checks if the generated password meets reqirements */
 /* function checkPassword(){ 
@@ -57,27 +68,27 @@ function checkTypes(){ /* checks which character types are needed and adds them 
   return passwordOk;
 } */
 
-function generatePassword(){
+function generatePassword() {
   password = "";
   var newChar = "";
   askTypes();
-  while(password.length < passwordLength){
+  while (password.length < passwordLength) {
     checkTypes();
-    while(selectedTypes.length > 0){
+    while (selectedTypes.length > 0) {
       charType = randomType();
       newChar = randomChar(charType);
-      while(selectedTypes.includes(charType)){
-        if(selectedTypes[0] == charType){
+      while (selectedTypes.includes(charType)) {
+        if (selectedTypes[0] == charType) {
           selectedTypes.shift();
-        } else{
+        } else {
           var temp = selectedTypes.shift();
           selectedTypes.push(temp);
         }
       }
-      password += (newChar);
+      password += newChar;
     }
   }
-  return password
+  return password;
   /* if(checkPassword()){
     return password;
   } else {
@@ -91,14 +102,14 @@ var password = "";
 var passwordLength = 8;
 var selectedTypes = [];
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var includeUppercase = true
+var includeUppercase = true;
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var numbers = "1234567890";
 var special = "!@#$%^&*_+-=,./<>?;':{}[]";
-var includeUppercase = true
-var includeLowercase = true
-var includeNumbers = true
-var includeSpecial = true
+var includeUppercase = true;
+var includeLowercase = true;
+var includeNumbers = true;
+var includeSpecial = true;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -109,7 +120,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
